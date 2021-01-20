@@ -78,8 +78,8 @@
         <property name="patterns">
             <list>
                 <!--需要扫描代码的包-->
-                <value>com.wxh.controller.*</value>
-                <value>com.wxh.service.*</value>
+                <value>com.hlw.cn.controller.*</value>
+                <value>com.hlw.cn.service.*</value>
             </list>
         </property>
     </bean>
@@ -100,7 +100,7 @@
 <!--        mapper文件路径-->
         <property name="mapperLocations" value="classpath:mappers/*.xml"/>
 <!--        别名-->
-        <property name="typeAliasesPackage" value="com.wxh.pojo"/>
+        <property name="typeAliasesPackage" value="com.hlw.cn.pojo"/>
 <!--        -->
         <property name="configuration" ref="setting"/>
     </bean>
