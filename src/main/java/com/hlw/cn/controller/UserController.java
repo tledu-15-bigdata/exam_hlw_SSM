@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.UUID;
+
 @Controller
 public class UserController {
 
@@ -44,6 +46,8 @@ public class UserController {
     @ResponseBody
     public User validateUser(@RequestBody User user){
 
-        return userService.validateUser(user);
+        System.out.println(user);
+
+        return userService.validateUser(new User(UUID.randomUUID().toString(),user.getUserName(),user.getUserAcc(),user.getUserPwd(),user.getUserEmail(),user.getUserPhone()));
     }
 }
