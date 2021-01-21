@@ -47,6 +47,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User validateUser(User user) {
 
+        System.out.println(user);
+        System.out.println("ooooo"+userDao.validateUser(user));
+
         return userDao.validateUser(user);
     }
 
