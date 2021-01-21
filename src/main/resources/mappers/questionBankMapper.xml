@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--负责人：代朋-->
+<mapper namespace="com.hlw.cn.dao.QuestionBankDao">
+
+<!--    插入分类-->
+   <insert id="insertClassify" parameterType="com.hlw.cn.pojo.Classify" >
+       INSERT INTO classify(classify_id,classify_name,classify_acc,classify_createtime,classify_isdelete)
+                VALUES (#{classifyID},#{classifyName},#{classifyAcc},#{classifyCreatetime},#{classifyIsdelete})
+   </insert>
+
+
+
+</mapper>
