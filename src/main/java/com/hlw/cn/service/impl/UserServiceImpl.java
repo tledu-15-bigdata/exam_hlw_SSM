@@ -6,6 +6,8 @@ import com.hlw.cn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -37,6 +39,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public Boolean registerUser(User user) {
         Boolean flag = false;
+        //给用户注入一个随机的id
+        user.setUserId(UUID.randomUUID().toString());
+        
         if (userDao.registerUser(user)==1){
             flag=true;
         }

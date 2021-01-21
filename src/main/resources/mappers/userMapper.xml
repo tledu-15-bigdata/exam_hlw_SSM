@@ -6,17 +6,18 @@
 
     <!--    注册时验证账号是否存在 存在返回1 不存在返回0-->
     <select id="validateAcc" parameterType="String" resultType="int">
-        select count(*) from user user_acc=#{acc} where user_isdelete=1
+        select count(*) from user  where user_acc=#{acc} and user_isdelete=1
     </select>
 
     <!--    注册时验证手机号是否存在 存在返回1 不存在返回0-->
     <select id="validatePhone" parameterType="String" resultType="int">
-        select count(*) from user user_phone=#{phone} where user_isdelete=1
+        select count(*) from user where user_phone=#{phone} and user_isdelete=1
     </select>
 
     <!--    将用户注册信息存入数据库-->
     <insert id="registerUser" parameterType="com.hlw.cn.pojo.User">
-        insert into user(user_id,user_name,user_acc,user_pwd,user_email,user_phone,user_createtime,user_isdelete) values(#{userId}，#{userName},#{userAcc},#{userPwd},#{userEmail},#{userPhone},now(),1)
+        insert into user(user_id,user_name,user_acc,user_pwd,user_email,user_phone,user_createtime,user_isdelete)
+        values(#{userId},#{userName},#{userAcc},#{userPwd},#{userEmail},#{userPhone},now(),1)
     </insert>
 
     <!--    登录时验证账号密码并返回登录用户信息-->

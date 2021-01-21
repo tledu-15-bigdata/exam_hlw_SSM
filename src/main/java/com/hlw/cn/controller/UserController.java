@@ -20,17 +20,17 @@ public class UserController {
     //验证账号
     @RequestMapping("/volidateAcc")
     @ResponseBody
-    public Boolean volidateAcc(String acc){
+    public Boolean volidateAcc(String userAcc){
 
-        return userService.validateAcc(acc);
+        return userService.validateAcc(userAcc);
     }
 
     //验证手机号
     @RequestMapping("/volidatePhone")
     @ResponseBody
-    public Boolean volidatePhine(String phone){
+    public Boolean volidatePhine(String userPhone){
 
-        return userService.validatePhone(phone);
+        return userService.validatePhone(userPhone);
     }
 
     //注册用户
@@ -42,9 +42,9 @@ public class UserController {
     }
 
     //用户登录
-    @RequestMapping("/validateUser")
+    @RequestMapping("/volidateUser")
     @ResponseBody
-    public User validateUser(@RequestBody User user){
+    public User volidateUser(@RequestBody User user){
 
         System.out.println(user);
 
