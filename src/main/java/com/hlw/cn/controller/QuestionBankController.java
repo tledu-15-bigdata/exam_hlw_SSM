@@ -4,13 +4,18 @@ package com.hlw.cn.controller;
 import com.hlw.cn.pojo.Classify;
 import com.hlw.cn.pojo.Question;
 import com.hlw.cn.service.impl.QuestionBankImpl;
+import com.hlw.cn.util.PageUtils;
+import com.sun.org.glassfish.gmbal.ParameterNames;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 负责人:：代朋
@@ -25,9 +30,11 @@ public class QuestionBankController {
     //添加分类
     @RequestMapping("/addClassify")
     @ResponseBody
-    public boolean addClassify(String acc,String name){
-        return questionBank.addClassifyService(acc,name);
+    public boolean addClassify(@RequestBody Classify classify){
+System.out.println(classify);
+        return questionBank.addClassifyService(classify.getClassifyAcc(),classify.getClassifyName());
     }
+
 
     //修改分类
     @RequestMapping("/updateClassify")
@@ -36,11 +43,13 @@ public class QuestionBankController {
         return questionBank.updateClassifyService(id, name, acc);
     }
 
+
     //查看分类
     @RequestMapping("/queryClassify")
     @ResponseBody
-    public List<Classify> queryClassify(){
-        return questionBank.queryClassify();
+    public List<Classify> queryClassify(String acc){
+System.out.println(acc);
+        return questionBank.queryClassify(acc);
     }
 
     //删除分类
@@ -71,15 +80,17 @@ public class QuestionBankController {
         return questionBank.deleteQuesstion(id);
     }
 
-    //查询试题
-//    @RequestMapping("/queryQuestion")
-//    @ResponseBody
-    //分页处理
-
     //查询一个试题
     @RequestMapping("/queryQuestionId")
     @ResponseBody
     public Question queryQuestionId(String id){
         return questionBank.queryQuestionId(id);
+    }
+    //查询试题
+    @RequestMapping("/queryQuestion")
+    @ResponseBody
+    //分页处理   参数修改  原来无参数，后修改为带参数（分页数据） 原因：需要分页
+    public PageUtils queryQuestion(@RequestBody Map<String,Object> param){
+        return questionBank.queryQuestionAll(param);
     }
 }

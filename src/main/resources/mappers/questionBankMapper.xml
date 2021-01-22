@@ -9,7 +9,7 @@
 <!--    插入分类-->
    <insert id="insertClassify" parameterType="com.hlw.cn.pojo.Classify" >
        INSERT INTO classify(classify_id,classify_name,classify_acc,classify_createtime,classify_isdelete)
-                VALUES (#{classifyID},#{classifyName},#{classifyAcc},#{classifyCreatetime},#{classifyIsdelete})
+                VALUES (#{classifyId},#{classifyName},#{classifyAcc},#{classifyCreatetime},#{classifyIsdelete})
    </insert>
 
 <!--    修改分类-->
@@ -19,14 +19,13 @@
 
 <!--    查询分类-->
 
-    <select id="queryClassify" resultType="com.hlw.cn.pojo.Classify">
-        SELECT * FROM classify
-        <where>
-            <if test="classify_name !=null and classify_name !=''">
-                AND classify_name=#{name}
-            </if>
-        </where>
+    <select id="queryClassify1" parameterType="string" resultType="com.hlw.cn.pojo.Classify">
+        SELECT * FROM classify WHERE classify_acc=#{acc}
     </select>
+    <select id="queryClassify2" parameterType="string" resultType="com.hlw.cn.pojo.Classify">
+        SELECT * FROM classify WHERE classify_acc=#{acc} AND classify_name=#{name}
+    </select>
+
 
 <!--    删除分类-->
     <delete id="deleteClassify" parameterType="String">
@@ -37,22 +36,21 @@
 
 <!--    添加试题-->
     <insert id="insertQuestion1" parameterType="com.hlw.cn.pojo.Question">
-            INSERT INTO question(question_id,question_topic,question_score,question_answer,question_classify,question_acc,question_createtime,question_isdelete,question_type)
-                VALUES (questionId,questionTopic,questionScore,questionAnswer,questionClassify,questionAcc,questionCreatetime,questionIsdelete,questionType)
+            INSERT INTO question(question_id,question_topic,question_score,question_answer,question_classify,question_acc,question_createtime,question_isdelete,question_type) VALUES (#{questionId},#{questionTopic},#{questionScore},#{questionAnswer},#{questionClassify},#{questionAcc},#{questionCreatetime},#{questionIsdelete},#{questionType})
     </insert>
     <insert id="insertQuestion2" parameterType="com.hlw.cn.pojo.Question">
             INSERT INTO options(question_id,single_a,single_b,single_c,single_d)
-                VALUES(questionId,singleA,singleB,singleC,singleD)
+                VALUES(#{questionId},#{singleA},#{singleB},#{singleC},#{singleD})
     </insert>
 
 
 <!--    修改试题-->
     <update id="updateQuestion1" parameterType="com.hlw.cn.pojo.Question">
         UPDATE question SET question_topic=#{questionTopic},question_score=#{questionScore},question_answer=#{questionAnswer}
-            WHERE question_id=#{questionId}
+          WHERE question_id=#{questionId}
     </update>
     <update id="updateQuestion2" parameterType="com.hlw.cn.pojo.Question">
-        UPDATE options SET single_a=#{singleA},single_b=#{singleB},singlec=#{singleC},singleD=#{singleD}
+        UPDATE options SET single_a=#{singleA},single_b=#{singleB},single_c=#{singleC},single_d=#{singleD}
             WHERE question_id=#{questionId}
     </update>
 
@@ -68,5 +66,11 @@
     <select id="queryQuestionOne2" parameterType="String" resultType="com.hlw.cn.pojo.Question">
         SELECT * FROM options WHERE question_id=#{value}
     </select>
-    
+
+<!--    分页查询试题-->
+    <select id="queryQuestionAll" parameterType="string" resultType="com.hlw.cn.pojo.Question">
+        SELECT * FROM question WHERE question_acc=#{acc}
+    </select>
+
 </mapper>
+

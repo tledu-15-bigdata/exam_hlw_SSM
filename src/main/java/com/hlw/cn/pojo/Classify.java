@@ -41,6 +41,10 @@ public class Classify {
         this.classifyId = classifyId;
     }
 
+    public LocalDateTime getClassifyCreatetime() {
+        return classifyCreatetime;
+    }
+
     public String getClassifyName() {
         return classifyName;
     }

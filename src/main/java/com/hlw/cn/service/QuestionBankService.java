@@ -2,9 +2,11 @@ package com.hlw.cn.service;
 
 import com.hlw.cn.pojo.Classify;
 import com.hlw.cn.pojo.Question;
+import com.hlw.cn.util.PageUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author DaiPeng
@@ -20,7 +22,7 @@ public interface QuestionBankService {
     public boolean updateClassifyService(String id,String name,String acc);
 
     //查看分类
-    public List<Classify> queryClassify();
+    public List<Classify> queryClassify(String acc);
 
     //删除分类
     public boolean deleteClassify(String id);
@@ -35,7 +37,7 @@ public interface QuestionBankService {
     public boolean deleteQuesstion(String id);
 
     //查询试题
-
+    public PageUtils queryQuestionAll(Map<String,Object> param);
 
     //查询一个试题
     public Question queryQuestionId(String id);
