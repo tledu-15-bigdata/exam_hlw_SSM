@@ -21,7 +21,7 @@ public class Question {
     private String questionAcc;
     //试题创建时间
     private LocalDateTime questionCreatetime;
-    //是否删除
+    //是否删除 1表示存在 0表示不存在
     private int questionIsdelete;
     //试题类型  0单选 1简答
     private int questionType;

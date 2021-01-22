@@ -1,7 +1,10 @@
 package com.hlw.cn.dao;
 
 import com.hlw.cn.pojo.Classify;
+import com.hlw.cn.pojo.Question;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author Daipeng
@@ -9,5 +12,33 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface QuestionBankDao {
 
+    //插入分类
     public int insertClassify(Classify classify);
+
+    //修改分类
+    public int updateClassify(Classify classify);
+
+    //查询分类
+    public List<Classify> queryClassify();
+    public Classify queryClassify(String name);
+
+    //删除分类
+    public int deleteClassify(String id);
+
+
+    //添加试题
+    public int insertQuestion1(Question question);
+    public int insertQuestion2(Question question);
+
+    //修改试题
+    public int updateQuestion1(Question question);
+    public int updateQuestion2(Question question);
+
+    //删除试题
+    public int deleteQuestion(String id);
+
+    //查询一个试题
+    public Question queryQuestionOne1(String id);
+    public Question queryQuestionOne2(String id);
+
 }

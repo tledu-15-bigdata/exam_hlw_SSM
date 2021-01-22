@@ -36,8 +36,9 @@ public interface QuestionBankService {
 
     //查询试题
 
+
     //查询一个试题
-    public Question queryQuestionId();
+    public Question queryQuestionId(String id);
 
 
 

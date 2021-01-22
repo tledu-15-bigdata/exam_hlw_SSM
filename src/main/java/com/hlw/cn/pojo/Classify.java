@@ -26,6 +26,12 @@ public class Classify {
         this.classifyAcc=acc;
     }
 
+    public Classify(String id,String name,String acc){
+        this.classifyId=id;
+        this.classifyName=name;
+        this.classifyAcc=acc;
+    }
+
 
     public String getClassifyId() {
         return classifyId;
