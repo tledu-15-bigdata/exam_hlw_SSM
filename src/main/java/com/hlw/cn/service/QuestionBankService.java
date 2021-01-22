@@ -22,7 +22,7 @@ public interface QuestionBankService {
     public boolean updateClassifyService(String id,String name,String acc);
 
     //查看分类
-    public List<Classify> queryClassify(String acc);
+    public PageUtils queryClassify(Map<String,Object> param);
 
     //删除分类
     public boolean deleteClassify(String id);

@@ -47,9 +47,9 @@ System.out.println(classify);
     //查看分类
     @RequestMapping("/queryClassify")
     @ResponseBody
-    public List<Classify> queryClassify(String acc){
-System.out.println(acc);
-        return questionBank.queryClassify(acc);
+    public PageUtils queryClassify(@RequestBody Map<String,Object> param){
+        System.out.println(param.toString());
+        return questionBank.queryClassify(param);
     }
 
     //删除分类

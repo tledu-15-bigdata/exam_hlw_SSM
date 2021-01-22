@@ -68,16 +68,18 @@ System.out.println(classify.getClassifyId());
 
     //查询分类
     @Override
-    public List<Classify> queryClassify(String acc) {
+    public PageUtils queryClassify(Map<String,Object> param) {
+
+        PageHelper.offsetPage(Integer.parseInt(param.get("offset").toString()),Integer.parseInt(param.get("pageNumber").toString()));
+        //接收数据库数据
         List<Classify> list=null;
-        if (acc!=null){
-            list=questionBankDao.queryClassify1(acc);
+        if (param.get("acc").toString()!=null){
+            list= questionBankDao.queryClassify1(param.get("acc").toString());
+            System.out.println(list);
         }
 
-
-System.out.println(list.toString());
-
-        return list;
+        PageInfo<Classify> pageInfo=new PageInfo<Classify>(list);
+        return new PageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
     }
 
     //删除分类
