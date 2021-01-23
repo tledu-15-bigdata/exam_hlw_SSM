@@ -3,6 +3,7 @@ package com.hlw.cn.service.impl;
 import com.hlw.cn.dao.UserDao;
 import com.hlw.cn.pojo.User;
 import com.hlw.cn.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +57,13 @@ public class UserServiceImpl implements UserService {
         System.out.println("ooooo"+userDao.validateUser(user));
 
         return userDao.validateUser(user);
+    }
+
+    @Override
+    public boolean addHeadsrc(String headsrc, String acc) {
+        int i =userDao.insertHeadsrc(headsrc,acc);
+        if (i!=0)return true;
+        return false;
     }
 
 

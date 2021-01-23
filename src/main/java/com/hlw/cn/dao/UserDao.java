@@ -2,6 +2,7 @@ package com.hlw.cn.dao;
 
 import com.hlw.cn.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserDao {
@@ -17,4 +18,6 @@ public interface UserDao {
 
     //登录时验证账号密码并返回登录用户信息
     public User validateUser(User user);
+
+    public int insertHeadsrc(@Param("headsrc") String headsrc, @Param("acc") String acc);
 }
