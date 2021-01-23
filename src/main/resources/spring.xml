@@ -103,6 +103,23 @@
         <property name="typeAliasesPackage" value="com.hlw.cn.pojo"/>
 <!--        -->
         <property name="configuration" ref="setting"/>
+
+        <!--配置PageHelper-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            offsetAsPageNum=true
+                            rowBoundsWithCount=true
+                            pageSizeZero=true
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+
     </bean>
 
 
@@ -115,6 +132,8 @@
         <!--        名称引用  value   mybatis以sqlSessionFactory规则转交给spring-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
+
+
 
 
 </beans>
