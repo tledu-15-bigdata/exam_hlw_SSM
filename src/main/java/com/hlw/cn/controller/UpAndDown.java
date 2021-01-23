@@ -1,6 +1,5 @@
 package com.hlw.cn.controller;
 
-import com.hlw.cn.service.UploadAndDownload.Download;
 import com.hlw.cn.service.UploadAndDownload.Upload;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,15 +16,15 @@ public class UpAndDown {
         Upload.upload(request);
     }
 
-//    下载文件
-    @RequestMapping("/DownLoad")
-    public void downLoad(HttpServletRequest request, HttpServletResponse response){
-        Download.download(request,response);
-    }
-
-    //遍历文件
-    @RequestMapping("/ListMyFile")
-    public void listMyFile(HttpServletRequest request, HttpServletResponse response){
-        Download.listMyFile(request,response);
-    }
+////    下载文件
+//    @RequestMapping("/DownLoad")
+//    public void downLoad(HttpServletRequest request, HttpServletResponse response){
+//        Download.download(request,response);
+//    }
+//
+//    //遍历文件
+//    @RequestMapping("/ListMyFile")
+//    public void listMyFile(HttpServletRequest request, HttpServletResponse response){
+//        Download.listMyFile(request,response);
+//    }
 }
