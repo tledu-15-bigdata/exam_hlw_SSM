@@ -32,7 +32,7 @@ public class QuestionBankController {
     @ResponseBody
     public boolean addClassify(@RequestBody Classify classify){
 System.out.println(classify);
-        return questionBank.addClassifyService(classify.getClassifyAcc(),classify.getClassifyName());
+        return questionBank.addClassifyService(classify.getClassifyName(),classify.getClassifyAcc());
     }
 
 
@@ -44,18 +44,27 @@ System.out.println(classify);
     }
 
 
-    //查看分类
+    //查看分类  分页时
     @RequestMapping("/queryClassify")
     @ResponseBody
-    public List<Classify> queryClassify(String acc){
-System.out.println(acc);
-        return questionBank.queryClassify(acc);
+    public PageUtils queryClassify(@RequestBody Map<String,Object> param){
+        System.out.println(param.toString());
+        return questionBank.queryClassify(param);
+    }
+
+    //添加试题时拿到分类信息
+    @RequestMapping("/queryClassifys")
+    @ResponseBody
+    public List<Classify> queryClassifys(String acc){
+        System.out.println(acc);
+        return questionBank.queryClassifys(acc);
     }
 
     //删除分类
     @RequestMapping("/deleteClassify")
     @ResponseBody
     public boolean deleteClassify(String id){
+
         return questionBank.deleteClassify(id);
     }
 
@@ -69,7 +78,7 @@ System.out.println(acc);
     //修改试题
     @RequestMapping("/updateQuestion")
     @ResponseBody
-    public Question updateQuestion(@RequestBody Question question){
+    public boolean updateQuestion(@RequestBody Question question){
         return questionBank.updateQuestion(question);
     }
 

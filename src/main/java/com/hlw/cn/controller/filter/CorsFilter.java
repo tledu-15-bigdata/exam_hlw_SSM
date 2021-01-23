@@ -4,14 +4,18 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //允许跨域
-@WebFilter(filterName = "CORSFilter", urlPatterns = {"/*"})
+@WebFilter(filterName = "CORSFilter", urlPatterns = {"/*"},initParams = {
+        @WebInitParam(name = "encoding", value = "UTF-8")
+})
 @Component
 public class CorsFilter implements Filter {
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 

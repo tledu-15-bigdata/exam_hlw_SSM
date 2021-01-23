@@ -68,17 +68,31 @@ System.out.println(classify.getClassifyId());
 
     //查询分类
     @Override
-    public List<Classify> queryClassify(String acc) {
+    public PageUtils queryClassify(Map<String,Object> param) {
+
+        PageHelper.offsetPage(Integer.parseInt(param.get("offset").toString()),Integer.parseInt(param.get("pageNumber").toString()));
+        //接收数据库数据
         List<Classify> list=null;
-        if (acc!=null){
-            list=questionBankDao.queryClassify1(acc);
+        if (param.get("acc").toString()!=null){
+            list= questionBankDao.queryClassify1(param.get("acc").toString());
+            System.out.println(list);
         }
 
+        PageInfo<Classify> pageInfo=new PageInfo<Classify>(list);
+        return new PageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
+    }
 
-System.out.println(list.toString());
+    //添加试题时拿到分类信息
+    @Override
+    public List<Classify> queryClassifys(String acc) {
+        List<Classify> list = null;
 
+        if (acc!=null){
+            list = questionBankDao.queryClassify1(acc);
+        }
         return list;
     }
+
 
     //删除分类
     @Override
@@ -96,7 +110,7 @@ System.out.println(list.toString());
     @Override
     public boolean addQuestion(Question question) {
         int i=0,j=0;
-
+        System.out.println(question.toString());
 
         question.setQuestionId(UUID.randomUUID().toString());
         question.setQuestionCreatetime(LocalDateTime.now());
@@ -120,16 +134,18 @@ System.out.println(list.toString());
 
     //修改试题
     @Override
-    public Question updateQuestion(Question question) {
-        Question q=null;
-        if (question.getQuestionId()!=null){
+    public boolean updateQuestion(Question question) {
+//        Question q=null;
+        int i=0,j=0;
+        if (question.getQuestionAcc()!=null){
             //修改
-            questionBankDao.updateQuestion1(question);
-            questionBankDao.updateQuestion2(question);
-            q=queryQuestionId(question.getQuestionId());
+            i=questionBankDao.updateQuestion1(question);
+            j=questionBankDao.updateQuestion2(question);
+//            q=queryQuestionId(question.getQuestionId());
+            if (i!=0 && j!=0)return true;
         }
 
-        return q;
+        return false;
     }
 
     //删除试题
@@ -162,21 +178,22 @@ System.out.println(list.toString());
 
 
     //查询试题
-
-
     @Override
     public PageUtils queryQuestionAll(Map<String,Object> param) {
         PageHelper.offsetPage(Integer.parseInt(param.get("offset").toString()),Integer.parseInt(param.get("pageNumber").toString()));
         //接收数据库数据
         List<Question> list=null;
-        if (param.get("questionId").toString()!=null){
+//        if (param.get("questionId").toString()!=null){
+        if (param.get("acc").toString()!=null){
             list= questionBankDao.queryQuestionAll(param.get("acc").toString());
             for (Question q:list){
-                Question qtemp=questionBankDao.queryQuestionOne2(q.getQuestionId());
-                q.setSingleA(qtemp.getSingleA());
-                q.setSingleB(qtemp.getSingleB());
-                q.setSingleC(qtemp.getSingleC());
-                q.setSingleD(qtemp.getSingleD());
+                if (q.getQuestionType()==0){
+                    Question qtemp=questionBankDao.queryQuestionOne2(q.getQuestionId());
+                    q.setSingleA(qtemp.getSingleA());
+                    q.setSingleB(qtemp.getSingleB());
+                    q.setSingleC(qtemp.getSingleC());
+                    q.setSingleD(qtemp.getSingleD());
+                }
             }
 System.out.println(list);
         }

@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
         Boolean flag = false;
         //给用户注入一个随机的id
         user.setUserId(UUID.randomUUID().toString());
-        
+
         if (userDao.registerUser(user)==1){
             flag=true;
         }

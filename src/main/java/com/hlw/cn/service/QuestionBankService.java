@@ -22,7 +22,10 @@ public interface QuestionBankService {
     public boolean updateClassifyService(String id,String name,String acc);
 
     //查看分类
-    public List<Classify> queryClassify(String acc);
+    public PageUtils queryClassify(Map<String,Object> param);
+
+    //添加试题时拿到分类信息
+    public List<Classify> queryClassifys(String acc);
 
     //删除分类
     public boolean deleteClassify(String id);
@@ -31,7 +34,7 @@ public interface QuestionBankService {
     public boolean addQuestion(Question question);
 
     //修改试题
-    public Question updateQuestion(Question question);
+    public boolean updateQuestion(Question question);
 
     //删除试题
     public boolean deleteQuesstion(String id);

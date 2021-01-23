@@ -56,7 +56,7 @@
 
 <!--    删除试题-->
     <update id="deleteQuestion" parameterType="String">
-        UPDATE question SET question_isdelete=#{0} WHERE question_id=#{value}
+        UPDATE question SET question_isdelete=0 WHERE question_id=#{value}
     </update>
     
 <!--    查询一个试题-->
@@ -69,7 +69,7 @@
 
 <!--    分页查询试题-->
     <select id="queryQuestionAll" parameterType="string" resultType="com.hlw.cn.pojo.Question">
-        SELECT * FROM question WHERE question_acc=#{acc}
+        SELECT * FROM question WHERE question_acc=#{acc} and question_isdelete = 1 order by question_createtime desc
     </select>
 
 </mapper>
