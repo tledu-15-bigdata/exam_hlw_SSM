@@ -74,7 +74,7 @@ public class Upload {
                     String value=item.getString("UTF-8");
                     System.out.println(name+"="+value);
                 }else {
-                    if ("acc".equals(item.getName())) acc=item.getName();
+                    if ("acc".equals(item.getName())) acc=item.getString("UTF-8");
                     else {
                         //获取上传文件名称
                         String fileName=item.getName();
