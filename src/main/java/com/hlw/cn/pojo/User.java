@@ -1,14 +1,23 @@
 package com.hlw.cn.pojo;
 
 public class User {
+    //用户id
     private String userId;
+    //用户名
     private String userName;
+    //用户账号
     private String userAcc;
+    //用户密码
     private String userPwd;
+    //用户邮箱
     private String userEmail;
+    //用户手机号
     private String userPhone;
+    //用户头像路径
     private String userHeadsrc;
+    //创建时间
     private String userCreatetime;
+    //本条数据是否存在  存在为1  不存在为0
     private String userIsdelete;
 
     public User() {
