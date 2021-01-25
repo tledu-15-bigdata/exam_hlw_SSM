@@ -68,6 +68,7 @@ public class TestPaperImpl implements TestPaperService {
     public boolean updateGroup(Group group){
         boolean flag=false;
 
+        System.out.println(group);
         if (testPaperDao.updateGroup(group)==1){
             flag = true;
         }
@@ -95,7 +96,7 @@ public class TestPaperImpl implements TestPaperService {
         //随机产生id
         String uuid = UUID.randomUUID().toString();
         testPaper.setTestId(uuid);
-
+        System.out.println(testPaper);///////////
         if (testPaperDao.insertTestPaper(testPaper)==1){
             params.put("mark",true);//mark:是否添加成功
             params.put("testId",uuid);//testId：试卷的id
@@ -156,8 +157,10 @@ public class TestPaperImpl implements TestPaperService {
     @Override
     public boolean addTestPaperQuestion(SelectQuestion selectQuestion){
         int num = 0;
+        System.out.println(selectQuestion);
         for (int i=0;i<selectQuestion.getUlist().size();i++){
             Question q = questionBankDao.queryQuestionOne1(selectQuestion.getUlist().get(i));
+            System.out.println(q);
             if (testPaperDao.insertTestPaperQuestion(new TestQuestion(q.getQuestionId(),q.getQuestionTopic(),q.getQuestionScore(),q.getQuestionAnswer(),q.getQuestionClassify(),q.getQuestionAcc(),q.getQuestionCreatetime(),q.getQuestionIsdelete(),q.getQuestionType(),q.getSingleA(),q.getSingleB(),q.getSingleC(),q.getSingleD(),selectQuestion.getQuestionId()))==1){
                 num++;
             }
@@ -196,6 +199,7 @@ public class TestPaperImpl implements TestPaperService {
     public boolean deleteTestPaper(TestPaper testPaper){
         boolean flag=false;
 
+
         if (testPaperDao.deleteTestPaper(testPaper)==1){
             flag = true;
         }
@@ -206,7 +210,7 @@ public class TestPaperImpl implements TestPaperService {
     @Override
     public boolean deleteTestQuestion(Question question){
         boolean flag=false;
-
+        System.out.println(question);
         if (testPaperDao.deleteTestQuestion(question)==1){
             flag = true;
         }

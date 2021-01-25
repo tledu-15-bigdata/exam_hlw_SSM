@@ -6,44 +6,44 @@
 
 <!--    查询分组  返回所有分组信息-->
     <select id="queryGroupALl" parameterType="String" resultType="com.hlw.cn.pojo.Group">
-        select * from group where group_acc=#{acc} and group_isdelete=1
+        select * from groups where group_acc=#{acc} and group_isdelete=1
     </select>
 <!--    查询分组是否存在  用于插入时 同名分组验证-->
     <select id="queryGroup" parameterType="com.hlw.cn.pojo.Group" resultType="int">
-        select count(*) from group where group_name=#{groupName} and group_isdelete=1
+        select count(*) from groups where group_name=#{groupName} and group_isdelete=1
     </select>
 
 <!--    插入分组-->
     <insert id="insertGroup" parameterType="com.hlw.cn.pojo.Group" >
-       INSERT INTO group(group_id,group_name,group_acc,group_createtime,group_isdelete)
+       INSERT INTO groups(group_id,group_name,group_acc,group_createtime,group_isdelete)
                 VALUES (#{groupId},#{groupName},#{groupAcc},now(),1)
    </insert>
 
 <!--    修改分组-->
     <update id="updateGroup" parameterType="com.hlw.cn.pojo.Group" >
-        update group set group_name=#{groupName} where group_id=#{groupId}
+        update groups set group_name=#{groupName} where group_id=#{groupId}
     </update>
 
 <!--    删除分组  假删 置isdelete为0-->
     <update id="deleteGroup" parameterType="com.hlw.cn.pojo.Group" >
-        update group set group_isdelete=0 where group_id=#{groupId}
+        update groups set group_isdelete=0 where group_id=#{groupId}
     </update>
 
 <!--    查询所有试卷的信息-->
     <select id="queryTestPaper" parameterType="String" resultType="com.hlw.cn.pojo.TestPaper">
-         SELECT * FROM testpaper WHERE test_acc=#{acc}  and question_isdelete = 1 order by question_createtime desc
+         SELECT * FROM testpaper WHERE test_acc=#{acc}  and test_isdelete = 1 order by test_createtime desc
     </select>
 
 <!--    添加试卷-->
     <insert id="insertTestPaper" parameterType="com.hlw.cn.pojo.TestPaper">
-        insert into testpaper(group_id,group_name,group_acc,group_createtime,group_isdelete)
-            values (#{groupId},#{groupName},#{groupAcc},now(),1)
+        insert into testpaper(test_id,test_group,test_title,test_createtime,test_isdelete,test_acc)
+            values (#{testId},#{testGroup},#{testTitle},now(),1,#{testAcc})
     </insert>
 
 <!--    对应试卷中添加试题-->
     <insert id="insertTestPaperQuestion" parameterType="com.hlw.cn.pojo.TestQuestion">
         insert into test_question(question_id,question_topic,question_score,question_answer,question_classify,question_acc,question_createtime,question_isdelete,question_type,question_testid)
-            values (#{questionId},#{questionTopic},#{questionsScore},#{questionAnswer},#{questionClassify},#{questionAcc},now(),1,#{questionType},#{questionTestid})
+            values (#{questionId},#{questionTopic},#{questionScore},#{questionAnswer},#{questionClassify},#{questionAcc},now(),1,#{questionType},#{questionTestid})
     </insert>
 
 <!--    查询对应试卷下的的所有试题-->
@@ -70,10 +70,13 @@
     <select id="queryQuestionAll" parameterType="com.hlw.cn.pojo.Question" resultType="com.hlw.cn.pojo.Question">
         select * from question
             <where>
-                <if test="questionClassify!='-1' and questionType!=-1 ">
-                    and question_classify=#{questionClassify} and question_type=#{questionType}
+                <if test="questionClassify!='-1'">
+                    and question_classify=#{questionClassify}
                 </if>
+                <if test="questionType!=-1">
+                    and question_type=#{questionType}
+                </if>
+                and question_acc=#{questionAcc} and question_isdelete = 1 order by question_createtime desc
             </where>
-        and question_acc=#{acc} and question_isdelete = 1 order by question_createtime desc
     </select>
 </mapper>

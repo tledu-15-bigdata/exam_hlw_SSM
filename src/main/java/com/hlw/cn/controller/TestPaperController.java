@@ -3,6 +3,7 @@ package com.hlw.cn.controller;
 import com.hlw.cn.pojo.*;
 import com.hlw.cn.service.TestPaperService;
 import com.hlw.cn.util.PageUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +18,11 @@ import java.util.Map;
 @Controller
 public class TestPaperController {
 
+    @Autowired
     private TestPaperService testPaperService;
 
     //查看分组  分页
-    @RequestMapping("/queryGroup")
+    @RequestMapping("/queryGroups")
     @ResponseBody
     public PageUtils queryClassify(@RequestBody Map<String,Object> param){
         System.out.println(param.toString());
@@ -29,7 +31,7 @@ public class TestPaperController {
     }
 
     //添加分组
-    @RequestMapping("/addGroup")
+    @RequestMapping("/addGroups")
     @ResponseBody
     public boolean addGroup(@RequestBody Group group){
 
@@ -37,7 +39,7 @@ public class TestPaperController {
     }
 
     //修改分组
-    @RequestMapping("/updateGroup")
+    @RequestMapping("/updateGroups")
     @ResponseBody
     public boolean updateGroup(@RequestBody Group group){
 
@@ -45,7 +47,7 @@ public class TestPaperController {
     }
 
     //删除分组
-    @RequestMapping("/deleteGroup")
+    @RequestMapping("/deleteGroups")
     @ResponseBody
     public boolean deleteGroup(@RequestBody Group group){
 

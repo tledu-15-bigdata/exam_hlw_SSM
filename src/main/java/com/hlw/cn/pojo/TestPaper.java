@@ -13,7 +13,7 @@ public class TestPaper {
     //是否存在  1存在  0不存在
     private String testIsdelete;
     //试卷生成的路径
-    private String testUrl ;
+    private String testUrl;
     //与用户账号绑定
     private String testAcc;
 

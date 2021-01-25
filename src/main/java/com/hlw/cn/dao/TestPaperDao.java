@@ -5,6 +5,7 @@ import com.hlw.cn.pojo.Question;
 import com.hlw.cn.pojo.TestPaper;
 import com.hlw.cn.pojo.TestQuestion;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public interface TestPaperDao {
     int insertTestPaperQuestion(TestQuestion testQuestion);
 
     //查询对应试卷下的的所有试题
-    List<Question> queryTestQuestion(String acc, String id);
+    List<Question> queryTestQuestion(@Param("acc") String acc, @Param("id") String id);
 
     //删除试卷
     int deleteTestPaper(TestPaper testPaper);
