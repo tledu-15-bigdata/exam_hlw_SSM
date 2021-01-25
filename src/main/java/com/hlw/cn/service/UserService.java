@@ -16,4 +16,7 @@ public interface UserService {
     //用户登录验证  返回用户信息
      User validateUser(User user);
 
+    //添加用户头向地址
+    public boolean addHeadsrc(String headsrc,String acc);
+
 }

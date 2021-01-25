@@ -1,5 +1,6 @@
 package com.hlw.cn.service.UploadAndDownload;
 
+import com.hlw.cn.service.impl.UserServiceImpl;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.ProgressListener;
@@ -17,6 +18,10 @@ import java.util.UUID;
 @Service
 public class Upload {
     public static void upload(HttpServletRequest httpServletRequest){
+        String acc=null;
+        String realSvePath=null;
+        UserServiceImpl userService = new UserServiceImpl();
+
         //上传文件环境准备
         //本地文件 传输到服务器
         String savePath=httpServletRequest.getServletContext().getRealPath("/uploadfile");
@@ -69,33 +74,39 @@ public class Upload {
                     String value=item.getString("UTF-8");
                     System.out.println(name+"="+value);
                 }else {
-                    //获取上传文件名称
-                    String fileName=item.getName();
-                    System.out.println("文件名称"+fileName);
-                    if (fileName==null||fileName.trim().equals(""))continue;
-                    //截取上传文件名称
-                    fileName=fileName.substring(fileName.lastIndexOf("\\")+1);
-                    String fileSuffixName=fileName.substring(fileName.lastIndexOf(".")+1);
-                    System.out.println("上传文件后缀"+fileSuffixName);
+                    if ("acc".equals(item.getName())) acc=item.getString("UTF-8");
+                    else {
+                        //获取上传文件名称
+                        String fileName=item.getName();
+                        System.out.println("文件名称"+fileName);
+                        if (fileName==null||fileName.trim().equals(""))continue;
+                        //截取上传文件名称
+                        fileName=fileName.substring(fileName.lastIndexOf("\\")+1);
+                        String fileSuffixName=fileName.substring(fileName.lastIndexOf(".")+1);
+                        System.out.println("上传文件后缀"+fileSuffixName);
 
-                    //获取上传文件输入流
-                    InputStream in=item.getInputStream();
-                    //设定真实保存文件名称
-                    String saveFileName=makeFileName(fileName);
+                        //获取上传文件输入流
+                        InputStream in=item.getInputStream();
+                        //设定真实保存文件名称
+                        String saveFileName=makeFileName(fileName);
 
-                    //获取最终存储路径+uuid的文件名称
-                    String realSvePath=makePath(savePath);
-
-                    FileOutputStream outputStream=new FileOutputStream(realSvePath+"\\"+saveFileName);
-                    //创建缓冲区
-                    byte[] buffer=new byte[1024];
-                    int len=0;
-                    while ((len=in.read(buffer))!=-1){
-                        outputStream.write(buffer,0,len);
+                        //获取最终存储路径+uuid的文件名称
+                        realSvePath=makePath(savePath);
+                        FileOutputStream outputStream=new FileOutputStream(realSvePath+"\\"+saveFileName);
+                        //创建缓冲区
+                        byte[] buffer=new byte[1024];
+                        int len=0;
+                        while ((len=in.read(buffer))!=-1){
+                            outputStream.write(buffer,0,len);
+                        }
+                        outputStream.flush();
+                        outputStream.close();
+                        in.close();
                     }
-                    outputStream.flush();
-                    outputStream.close();
-                    in.close();
+
+                    //存入数据库将头像地址
+                    if (realSvePath!=null && acc!=null) System.out.println(userService.addHeadsrc(realSvePath,acc));
+
                 }
             }
 
