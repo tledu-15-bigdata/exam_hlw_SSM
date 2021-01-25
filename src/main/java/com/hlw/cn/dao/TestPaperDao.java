@@ -44,4 +44,7 @@ public interface TestPaperDao {
 
     //添加试卷生成后的路径
     int addTestUrl(TestPaper testPaper);
+
+    //分页查询试题
+    List<Question> queryQuestionAll(Question question);
 }

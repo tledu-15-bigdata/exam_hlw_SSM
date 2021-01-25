@@ -133,11 +133,10 @@ public class TestPaperImpl implements TestPaperService {
         List<Question> list2=null;
         if (param.get("acc").toString()!=null){
             //从题库中拿到所有的题
-            list1 = questionBankDao.queryQuestionAll(param.get("acc").toString());
+            list1 = testPaperDao.queryQuestionAll(new Question(param.get("subject").toString(),param.get("acc").toString(),(int)param.get("select")));
             System.out.println("过滤前"+list1.toString());////////////
             //拿到对应试卷下的的所有试题
             list2 = testPaperDao.queryTestQuestion(param.get("acc").toString(),param.get("id").toString());
-
             //遍历删除试卷中已经存在的试题
             for (int i=0;i<list2.size();i++){
                 for (int j=0;j<list1.size();j++){

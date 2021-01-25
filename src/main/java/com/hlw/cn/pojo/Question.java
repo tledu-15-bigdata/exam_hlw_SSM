@@ -33,6 +33,14 @@ public class Question {
     private String singleC;
     private String singleD;
 
+    public Question() {
+    }
+
+    public Question(String questionClassify, String questionAcc, int questionType) {
+        this.questionClassify = questionClassify;
+        this.questionAcc = questionAcc;
+        this.questionType = questionType;
+    }
 
     public String getQuestionId() {
         return questionId;
