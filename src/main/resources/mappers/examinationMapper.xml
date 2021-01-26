@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlw.cn.dao.ExaminationDao">
+
+<!--    根据试卷号显示试题-->
+    <select id="selctTestId" parameterType="string" resultType="java.lang.String">
+        SELECT test_id FROM testpaper WHERE test_url=#{value} AND test_isdelete=1
+    </select>
+    <select id="selectTestPaper" parameterType="string" resultType="com.hlw.cn.pojo.Question">
+        SELECT * FROM test_question WHERE question_testid=#{value} AND question_isdelete=1
+    </select>
+    <select id="selectSingle" parameterType="string" resultType="com.hlw.cn.pojo.Question">
+        SELECT * FROM options WHERE question_id=#{value}
+    </select>
+
+
+
+</mapper>
