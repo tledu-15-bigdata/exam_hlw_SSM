@@ -13,10 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class TestPaperImpl implements TestPaperService {
@@ -96,6 +93,13 @@ public class TestPaperImpl implements TestPaperService {
         //随机产生id
         String uuid = UUID.randomUUID().toString();
         testPaper.setTestId(uuid);
+
+        //产生六位考试码
+        Random r=new Random(1);
+        int i=r.nextInt(899999);
+        i=i+100000;
+        testPaper.setTestUrl(String.valueOf(i));
+
         System.out.println(testPaper);///////////
         if (testPaperDao.insertTestPaper(testPaper)==1){
             params.put("mark",true);//mark:是否添加成功

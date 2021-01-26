@@ -36,8 +36,8 @@
 
 <!--    添加试卷-->
     <insert id="insertTestPaper" parameterType="com.hlw.cn.pojo.TestPaper">
-        insert into testpaper(test_id,test_group,test_title,test_createtime,test_isdelete,test_acc)
-            values (#{testId},#{testGroup},#{testTitle},now(),1,#{testAcc})
+        insert into testpaper(test_id,test_group,test_title,test_createtime,test_isdelete,test_acc,test_url)
+            values (#{testId},#{testGroup},#{testTitle},now(),1,#{testAcc},#{testUrl})
     </insert>
 
 <!--    对应试卷中添加试题-->
