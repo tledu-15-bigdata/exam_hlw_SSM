@@ -1,5 +1,6 @@
 package com.hlw.cn.controller;
 
+import com.hlw.cn.pojo.ExamAnswer;
 import com.hlw.cn.pojo.Examinee;
 import com.hlw.cn.pojo.Question;
 import com.hlw.cn.service.ExaminationService;
@@ -21,7 +22,7 @@ public class ExaminationController {
     //根据试卷号返回试题
     @RequestMapping("/inputTestNumber")
     @ResponseBody
-    public List<Question> inputTestNumber(@RequestBody Map<String,Object> map){
+    public Map<String,Object> inputTestNumber(@RequestBody Map<String,Object> map){
         return examinationService.selectTestPaper((String) map.get("examId"));
     }
 
@@ -30,5 +31,10 @@ public class ExaminationController {
     @ResponseBody
     public Boolean insertExamiee(@RequestBody Examinee examinee){
         return examinationService.insertExamineeService(examinee);
+    }
+
+    //接收答案
+    public boolean submitTestPaper(@RequestBody List<ExamAnswer> examAnswer){
+        return examinationService.submitTestPaperService(examAnswer);
     }
 }

@@ -1,5 +1,7 @@
 package com.hlw.cn.pojo;
 
+import java.time.LocalDateTime;
+
 public class Examinee {
     //考生信息
     private String examineeId;
@@ -7,7 +9,7 @@ public class Examinee {
     private String examineePhone;
     private String examineeTestid;
     private String examineeScore;
-    private String examineeCreatetime;
+    private LocalDateTime examineeCreatetime;
     private String examineeIsdelete;
 
     public String getExamineeId() {
@@ -50,11 +52,11 @@ public class Examinee {
         this.examineeScore = examineeScore;
     }
 
-    public String getExamineeCreatetime() {
+    public LocalDateTime getExamineeCreatetime() {
         return examineeCreatetime;
     }
 
-    public void setExamineeCreatetime(String examineeCreatetime) {
+    public void setExamineeCreatetime(LocalDateTime examineeCreatetime) {
         this.examineeCreatetime = examineeCreatetime;
     }
 
