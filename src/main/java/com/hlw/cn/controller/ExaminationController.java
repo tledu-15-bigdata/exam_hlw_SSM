@@ -41,6 +41,6 @@ public class ExaminationController {
     public boolean submitTestPaper( @RequestBody ListUtil list){
 
 
-        return examinationService.submitTestPaperService((List<ExamAnswer>) list);
+        return examinationService.submitTestPaperService(list.list);
     }
 }

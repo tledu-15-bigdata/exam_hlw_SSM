@@ -9,7 +9,7 @@ import java.util.List;
 
 @Component
 public class ListUtil  implements  Serializable{
-    public static List<ExamAnswer> list;
+    public  List<ExamAnswer> list;
 
     public ListUtil(){}
     public List<ExamAnswer> getList() {
