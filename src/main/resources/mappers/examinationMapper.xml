@@ -23,18 +23,18 @@
 <!--插入考生信息-->
     <insert id="insertExamination" parameterType="com.hlw.cn.pojo.Examinee">
         INSERT INTO examinee(examinee_id,examinee_name,examinee_phone,examinee_createtime,examinee_isdelete)
-            VALUES (examineeId,examineeName,examineePhone,examineeCreatetime,examineeIsdelete)
+            VALUES (#{examineeId},#{examineeName},#{examineePhone},#{examineeCreatetime},#{examineeIsdelete})
     </insert>
 
 
-<!--    插入考生信息-->
+<!--    插入考生试题信息-->
     <insert id="insertExamintionAnswer" parameterType="com.hlw.cn.pojo.ExamAnswer">
         INSERT INTO examanswer(examanswer_id,examanswer_testid,examanswer_phone,examanswer_trueanswer,examanswer_examineeanswer,examanswer_score,examanswer_questionid,examanswer_creattime,examanswer_isdelete)
-            VALUES (examanswerID,examanswerTestid,examanswerPhone,examanswerTrueanswer,examanswerExamineeanswer,examanswerScore,examanswerQuestionid,examanswerCreattime,1)
+            VALUES (#{examanswerId},#{examanswerTestid},#{examanswerPhone},#{examanswerTrueanswer},#{examanswerExamineeanswer},#{examanswerScore},#{examanswerQuestionid},#{examanswerCreattime},1)
     </insert>
     
 <!--    插入最终成绩-->
     <insert id="insertFinallyScore" parameterType="com.hlw.cn.pojo.Examinee">
-        INSERT INTO examinee(examinee_score) WHERE examinee_phone=#{examineePhone} AND examinee_isdelete=#{examineeIsdelete}
+        INSERT INTO examinee(examinee_score) VALUES (#{examineeScore})WHERE examinee_phone=#{examineePhone} AND examinee_isdelete=#{examineeIsdelete}
     </insert>
 </mapper>

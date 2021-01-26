@@ -15,7 +15,7 @@ public interface ExaminationDao {
     //根据试卷id查对应试卷试题
     public List<Question> selectTestPaper(String id);
     //查询单选题的选项
-    public List<Question> selectSingle(String id);
+    public Question selectSingle(String id);
     //查询试卷标题
     public String selctTestTitle(String id);
     //插入考生信息
