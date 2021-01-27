@@ -52,7 +52,7 @@ public class ExaminationService {
         examinee1.setExamineeName(examinee.getExamineeName());
         examinee1.setExamineePhone(examinee.getExamineePhone());
         examinee1.setExamineeCreatetime(LocalDateTime.now());
-        examinee1.setExamineeIsdelete("1");
+        examinee1.setExamineeIsdelete(1);
 
         int i=examinationDao.insertExamination(examinee1);
         //受影响行数大于零说明插入成功
@@ -92,13 +92,12 @@ public class ExaminationService {
         Examinee examinee=new Examinee();
         examinee.setExamineePhone(examAnswers.get(0).getExamanswerPhone());
         examinee.setExamineeTestid(examAnswers.get(0).getExamanswerTestid());
-        examinee.setExamineeScore(new String(String.valueOf(sumScore)));
+        examinee.setExamineeScore(sumScore);
+        System.out.println(examinee);
         int i=examinationDao.insertFinallyScore(examinee);
 
         if (i!=0) System.out.println("成绩入库成功");
         else {return false;}
-
-
 
         return true;
 

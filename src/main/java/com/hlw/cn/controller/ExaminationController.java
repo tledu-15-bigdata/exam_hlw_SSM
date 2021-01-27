@@ -29,18 +29,18 @@ public class ExaminationController {
     }
 
     //插入考生信息
-    @RequestMapping("/insertExamiee")
+    @RequestMapping("/insertExaminee")
     @ResponseBody
     public Boolean insertExamiee(@RequestBody Examinee examinee){
         return examinationService.insertExamineeService(examinee);
     }
 
+    //接收答案
     @RequestMapping("/submitTestPaper")
     @ResponseBody
-    //接收答案
-    public boolean submitTestPaper( @RequestBody ListUtil list){
+    public boolean submitTestPaper(@RequestBody List<ExamAnswer> list){
 
 
-        return examinationService.submitTestPaperService(list.list);
+        return examinationService.submitTestPaperService(list);
     }
 }

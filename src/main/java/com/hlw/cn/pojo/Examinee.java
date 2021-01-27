@@ -8,9 +8,9 @@ public class Examinee {
     private String examineeName;
     private String examineePhone;
     private String examineeTestid;
-    private String examineeScore;
+    private int examineeScore;
     private LocalDateTime examineeCreatetime;
-    private String examineeIsdelete;
+    private int examineeIsdelete;
 
     public String getExamineeId() {
         return examineeId;
@@ -44,12 +44,20 @@ public class Examinee {
         this.examineeTestid = examineeTestid;
     }
 
-    public String getExamineeScore() {
+    public int getExamineeScore() {
         return examineeScore;
     }
 
-    public void setExamineeScore(String examineeScore) {
+    public void setExamineeScore(int examineeScore) {
         this.examineeScore = examineeScore;
+    }
+
+    public int getExamineeIsdelete() {
+        return examineeIsdelete;
+    }
+
+    public void setExamineeIsdelete(int examineeIsdelete) {
+        this.examineeIsdelete = examineeIsdelete;
     }
 
     public LocalDateTime getExamineeCreatetime() {
@@ -58,14 +66,6 @@ public class Examinee {
 
     public void setExamineeCreatetime(LocalDateTime examineeCreatetime) {
         this.examineeCreatetime = examineeCreatetime;
-    }
-
-    public String getExamineeIsdelete() {
-        return examineeIsdelete;
-    }
-
-    public void setExamineeIsdelete(String examineeIsdelete) {
-        this.examineeIsdelete = examineeIsdelete;
     }
 
     @Override

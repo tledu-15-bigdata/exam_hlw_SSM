@@ -34,7 +34,7 @@
     </insert>
     
 <!--    插入最终成绩-->
-    <insert id="insertFinallyScore" parameterType="com.hlw.cn.pojo.Examinee">
-        INSERT INTO examinee(examinee_score) VALUES (#{examineeScore})WHERE examinee_phone=#{examineePhone} AND examinee_isdelete=#{examineeIsdelete}
-    </insert>
+    <update id="insertFinallyScore" parameterType="com.hlw.cn.pojo.Examinee">
+        update examinee set examinee_score=#{examineeScore} where examinee_phone=#{examineePhone} and examinee_isdelete=1
+    </update>
 </mapper>
