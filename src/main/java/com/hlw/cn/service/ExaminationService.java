@@ -71,6 +71,10 @@ public class ExaminationService {
 
         //插入数据库
         for (ExamAnswer examAnswer : examAnswers){
+            //写入uuid和生成时间
+            examAnswer.setExamanswerId(uuid);
+            examAnswer.setExamanswerCreattime(localDateTime);
+
             //计算是否得分
             if (examAnswer.getExamanswerTrueanswer().equals(examAnswer.getExamanswerExamineeanswer())){
                 sumScore=sumScore+examAnswer.getExamanswerScore();

@@ -1,5 +1,7 @@
 package com.hlw.cn.pojo;
 
+import java.time.LocalDateTime;
+
 public class ExamAnswer {
     //考生答案新消息
     private String examanswerId;
@@ -9,7 +11,7 @@ public class ExamAnswer {
     private String examanswerExamineeanswer;
     private int examanswerScore;
     private String examanswerQuestionid;
-    private  String examanswerCreattime;
+    private LocalDateTime examanswerCreattime;
     private  String examanswerIsdelete;
 
 
@@ -69,11 +71,11 @@ public class ExamAnswer {
         this.examanswerQuestionid = examanswerQuestionid;
     }
 
-    public String getExamanswerCreattime() {
+    public LocalDateTime getExamanswerCreattime() {
         return examanswerCreattime;
     }
 
-    public void setExamanswerCreattime(String examanswerCreattime) {
+    public void setExamanswerCreattime(LocalDateTime examanswerCreattime) {
         this.examanswerCreattime = examanswerCreattime;
     }
 

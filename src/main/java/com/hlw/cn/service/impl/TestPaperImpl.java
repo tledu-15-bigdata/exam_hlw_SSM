@@ -94,6 +94,13 @@ public class TestPaperImpl implements TestPaperService {
         String uuid = UUID.randomUUID().toString();
         testPaper.setTestId(uuid);
 
+        //由于前端多了''
+        String tempGroup=testPaper.getTestGroup();
+        //掐头去尾
+        tempGroup=tempGroup.substring(1,tempGroup.length()-1);
+        testPaper.setTestGroup(tempGroup);
+
+
         //产生六位考试码
         Random r=new Random(1);
         int i=r.nextInt(899999);
