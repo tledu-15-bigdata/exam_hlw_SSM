@@ -20,6 +20,9 @@ public interface MangerMenuDao {
     //查询所有菜单栏
     public List<MangerMenu> queryMenuAll();
 
+    //插入菜单那
+    public int insertMenu(MangerMenu mangerMenu);
+
     //修改菜单
     public int updateMenu(MangerMenu mangerMenu);
 

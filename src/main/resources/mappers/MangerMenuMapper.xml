@@ -16,7 +16,13 @@
     <select id="queryMenuAll" resultType="com.hlw.cn.pojo.MangerMenu">
         SELECT * FROM manger_menu WHERE menu_isdelete=1
     </select>
-    
+
+<!--    插入菜单-->
+    <insert id="insertMenu" parameterType="com.hlw.cn.pojo.MangerMenu">
+        INSERT INTO manger_menu(menu_id,menu_name,menu_up,menu_createtime,menu_isdelete,menu_level)
+            VALUES(#{menuId},#{menuName},#{menuUp},#{menuCreatetime},1,#{menuLevel})
+    </insert>
+
 <!--    修改菜单拉-->
     <update id="updateMenu" parameterType="com.hlw.cn.pojo.MangerMenu">
         UPDATE manger_menu SET menu_name=#{menuName} WHERE menu_id=#{menuId} AND menu_isdelete=1
@@ -24,7 +30,7 @@
 
 <!--    删除菜单栏-->
     <update id="deleteMenu" parameterType="string">
-        UPDATE manger_menu SET menu_isdelete=0 WHERE menu_id=#{menuId} AND menu_isdelete=1
+        UPDATE manger_menu SET menu_isdelete=0 WHERE menu_id=#{menuId}
     </update>
 
 
@@ -36,10 +42,11 @@
     
 <!--    删除用户-->
     <update id="deleteUser" parameterType="string">
-        UPDATE user SET user_isdelete=0
+        UPDATE user SET user_isdelete=0 WHERE user_id=#{value}
     </update>
+
 <!--    启用用户-->
     <update id="openUser" parameterType="string">
-        UPDATE user SET user_isdelete=1
+        UPDATE user SET user_isdelete=1 WHERE user_id=#{value}
     </update>
 </mapper>

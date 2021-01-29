@@ -33,8 +33,14 @@ public class MangerMenuController {
     //查询所有的菜单
     @RequestMapping("/queryMenuAll")
     @ResponseBody
-    public PageUtils queryMenuAll(Map<String,Object> map){
+    public PageUtils queryMenuAll(@RequestBody Map<String,Object> map){
             return mangerMenuService.queryMenuAllService(map);
+    }
+
+    @RequestMapping("/insertMenu")
+    @ResponseBody
+    public Boolean insertMenu(@RequestBody MangerMenu mangerMenu){
+        return mangerMenuService.insertMenu(mangerMenu);
     }
 
     //菜单栏修改
@@ -56,7 +62,7 @@ public class MangerMenuController {
     //查询用户
     @RequestMapping("/queryUsers")
     @ResponseBody
-    public PageUtils queryUsers(Map<String,Object> map){
+    public PageUtils queryUsers(@RequestBody Map<String,Object> map){
         return mangerMenuService.queryUsers(map);
     }
 
@@ -71,6 +77,9 @@ public class MangerMenuController {
     @RequestMapping("/insertUsers")
     @ResponseBody
     public Boolean openUsers(String userId){
-        return mangerMenuService.openUserService(userId);
+
+
+                Boolean result=mangerMenuService.openUserService(userId);
+                return result;
     }
 }

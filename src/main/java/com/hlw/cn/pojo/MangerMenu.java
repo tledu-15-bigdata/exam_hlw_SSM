@@ -1,5 +1,7 @@
 package com.hlw.cn.pojo;
 
+import java.time.LocalDateTime;
+
 /**
  * 负责人：代朋
  */
@@ -12,10 +14,20 @@ public class MangerMenu {
     //菜单栏上一级
     private String menuUp;
     //菜单栏创建时间
-    private String menuCreatetime;
+    private LocalDateTime menuCreatetime;
+    //等级
+    private int menuLevel;
     //菜单栏是否删除   1存在  0不存在
     private String menuIsdelete;
 
+
+    public int getMenuLevel() {
+        return menuLevel;
+    }
+
+    public void setMenuLevel(int menuLevel) {
+        this.menuLevel = menuLevel;
+    }
 
     public String getMenuId() {
         return menuId;
@@ -41,11 +53,11 @@ public class MangerMenu {
         this.menuUp = menuUp;
     }
 
-    public String getMenuCreatetime() {
+    public LocalDateTime getMenuCreatetime() {
         return menuCreatetime;
     }
 
-    public void setMenuCreatetime(String menuCreatetime) {
+    public void setMenuCreatetime(LocalDateTime menuCreatetime) {
         this.menuCreatetime = menuCreatetime;
     }
 

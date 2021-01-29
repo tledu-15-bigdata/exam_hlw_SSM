@@ -18,6 +18,9 @@ public interface MangerMenuService {
     //查询所有菜单栏
     public PageUtils queryMenuAllService(Map<String,Object> map);
 
+    //新增菜单
+    public Boolean insertMenu(MangerMenu mangerMenu);
+
 
     //菜单栏修改
     public Boolean updateMenuService(MangerMenu mangerMenu);
