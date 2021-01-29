@@ -37,6 +37,19 @@ public class MangerMenuImpl implements MangerMenuService {
 
     }
 
+
+    //查询所有菜单栏
+    @Override
+    public PageUtils queryMenuAllService(Map<String,Object> map){
+        PageHelper.offsetPage(Integer.parseInt(map.get("offset").toString()),Integer.parseInt(map.get("pageNumber").toString()));
+        List list=mangerMenuDao.queryMenuAll();
+
+        PageInfo pageInfo=new PageInfo(list);
+        return new PageUtils(pageInfo.getList(), new Long(pageInfo.getTotal()).intValue());
+
+
+    }
+
     //修改菜单栏
     @Override
     public Boolean updateMenuService(MangerMenu mangerMenu) {

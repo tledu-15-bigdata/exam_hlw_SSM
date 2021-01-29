@@ -5,6 +5,7 @@ import com.hlw.cn.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 负责人：代朋
@@ -15,6 +16,9 @@ public interface MangerMenuDao {
     //查询菜单栏
     public List<MangerMenu> queryMenuOne();
     public List<MangerMenu> queryMenuTwo();
+
+    //查询所有菜单栏
+    public List<MangerMenu> queryMenuAll();
 
     //修改菜单
     public int updateMenu(MangerMenu mangerMenu);

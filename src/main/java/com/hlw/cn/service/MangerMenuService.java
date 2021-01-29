@@ -15,6 +15,10 @@ import java.util.Map;
 public interface MangerMenuService {
     //查询菜单栏
     public Map<String,Object> queryMenuService();
+    //查询所有菜单栏
+    public PageUtils queryMenuAllService(Map<String,Object> map);
+
+
     //菜单栏修改
     public Boolean updateMenuService(MangerMenu mangerMenu);
     //菜单栏删除

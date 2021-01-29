@@ -12,6 +12,11 @@
         SELECT * FROM manger_menu WHERE menu_level=2 AND menu_isdelete=1
     </select>
     
+<!--    查询所有菜单栏-->
+    <select id="queryMenuAll" resultType="com.hlw.cn.pojo.MangerMenu">
+        SELECT * FROM manger_menu WHERE menu_isdelete=1
+    </select>
+    
 <!--    修改菜单拉-->
     <update id="updateMenu" parameterType="com.hlw.cn.pojo.MangerMenu">
         UPDATE manger_menu SET menu_name=#{menuName} WHERE menu_id=#{menuId} AND menu_isdelete=1

@@ -30,6 +30,13 @@ public class MangerMenuController {
         return mangerMenuService.queryMenuService();
     }
 
+    //查询所有的菜单
+    @RequestMapping("/queryMenuAll")
+    @ResponseBody
+    public PageUtils queryMenuAll(Map<String,Object> map){
+            return mangerMenuService.queryMenuAllService(map);
+    }
+
     //菜单栏修改
     @RequestMapping("/updateMenu")
     @ResponseBody
