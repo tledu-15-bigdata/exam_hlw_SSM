@@ -1,4 +1,4 @@
-package com.hlw.cn.controller.filter;
+package com.hlw.cn.filter;
 
 import org.springframework.stereotype.Component;
 
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //允许跨域
-@WebFilter(filterName = "CORSFilter", urlPatterns = {"/*"},initParams = {
-        @WebInitParam(name = "encoding", value = "UTF-8")
-})
-@Component
+//@WebFilter(filterName = "CORSFilter", urlPatterns = {"/*"},initParams = {
+//        @WebInitParam(name = "encoding", value = "UTF-8")
+//})
+//@Component
 public class CorsFilter implements Filter {
 
     @Override
@@ -24,6 +24,7 @@ public class CorsFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
+        System.out.println("跨域开始");
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpServletRequest request = (HttpServletRequest)servletRequest;
 

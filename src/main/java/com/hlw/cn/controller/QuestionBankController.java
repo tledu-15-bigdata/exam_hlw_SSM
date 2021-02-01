@@ -5,7 +5,6 @@ import com.hlw.cn.pojo.Classify;
 import com.hlw.cn.pojo.Question;
 import com.hlw.cn.service.impl.QuestionBankImpl;
 import com.hlw.cn.util.PageUtils;
-import com.sun.org.glassfish.gmbal.ParameterNames;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

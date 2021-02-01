@@ -18,6 +18,11 @@
        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
+    <!--    注解扫描-->
+    <context:component-scan base-package="com.hlw.cn">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
     <!--    扫描资源文件-->
     <context:property-placeholder ignore-unresolvable="true"
                                   location="classpath:redis.properties,classpath:jdbc.properties"/>
