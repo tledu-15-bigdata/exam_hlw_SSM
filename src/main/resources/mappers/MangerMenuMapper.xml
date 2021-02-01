@@ -37,7 +37,7 @@
 
 <!--    查询用户-->
     <select id="queryUsers" resultType="com.hlw.cn.pojo.User">
-        SELECT *FROM user WHERE user_isdelete=1
+        SELECT *FROM user
     </select>
     
 <!--    删除用户-->
